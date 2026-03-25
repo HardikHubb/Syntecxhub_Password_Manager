@@ -137,7 +137,7 @@ def show_credentials(key):
     cursor.execute("SELECT * FROM credentials")
     records = cursor.fetchall()
 
-     for row in records:
+    for row in records:
         decrypted_password = decrypt_password(row[3], key)
 
     print("\nStored Credentials:")
@@ -282,7 +282,7 @@ def erase_database(key):
 
 
 
-def menu(key):
+def menu():
     while True:
         print("\n=== Password Manager ===")
         print("1. Add Credentials")
@@ -296,22 +296,22 @@ def menu(key):
         choice = input("Enter choice: ")
 
         if choice == "1":
-            add_credentials()
+            add_credentials(key)
 
         elif choice == "2":
-            show_credentials()
+            show_credentials(key)
 
         elif choice == "3":
-            edit_credentials()
+            edit_credentials(key)
 
         elif choice == "4":
-            delete_credentials()
+            delete_credentials(key)
 
         elif choice == "5":
-            backup_database()
+            backup_database(key)
 
         elif choice == "6":
-            erase_database()
+            erase_database(key)
 
         elif choice == "7":
             print("Exiting...")
@@ -319,5 +319,6 @@ def menu(key):
 
         else:
             print("Invalid choice ❌")
+
     
 menu()
